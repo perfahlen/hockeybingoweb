@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HockeyBox Bingo - För Klubbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .marketing-page {
+            margin: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            background-size: 50px 50px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #718096;
+            margin-bottom: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .problem-card p {
+            color: #718096;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .feature-row {
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: #f7fafc;
+            border-radius: 12px;
+            height: 100%;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #4a5568;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+
+        /* How It Works Section */
+        .how-it-works-section {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            color: white;
+        }
+
+        .how-it-works-section .section-title {
+            color: white;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            color: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step-card p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .benefit-card {
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .benefit-card p {
+            color: #718096;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section .lead {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline-primary:hover {
+            background: white;
+            color: #f5576c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+
+            .problem-card,
+            .feature-card,
+            .step-card,
+            .benefit-card {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="marketing-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Förvandla Periodpauser Till Intäkter</h1>
+                <p class="hero-subtitle">Engagera dina fans med interaktiva bingospel och generera extra intäkter under varje match</p>
+                
+            </div>
+        </section>
+
+        <!-- Problem Statement -->
+        <section class="problem-section">
+            <div class="container">
+                <h2 class="section-title">Utmaningen Alla Klubbar Möter</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="problem-card">
+                            <div class="problem-icon">📱</div>
+                            <h3>Fans</h3>
+                            <p>
+                                Under periodpauserna finns en fantastisk möjlighet att hålla fansen engagerade i arenaupplevelsen. Genom kreativa aktiviteter, interaktioner eller underhållning kan vi tillsammans göra pauserna underhållande!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="problem-card">
+                            <div class="problem-icon">💰</div>
+                            <h3>Utöka intäkter</h3>
+                            <p>Utöka möjlighet till intäkter som inte finns idag på för besökarna underhållande sätt.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="problem-card">
+                            <div class="problem-icon">🎪</div>
+                            <h3>Pauser</h3>
+                            <p>Första perioden: kaffe och korv. Andra perioden: istället för att titta på telefonen och ismaskinen. Spela tillsammans med övriga besökare istället.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="solution-section" id="features">
+            <div class="container">
+                <h2 class="section-title">Här kommer HockeyBingo</h2>
+                <!--<p class="section-subtitle">Den kompletta lösningen för att engagera fans och generera intäkter</p>-->
+                
+                <div class="row feature-row">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">💸</div>
+                            <h3>Öka Intäkterna</h3>
+                            <p>Gör varje match till en intäktsmöjlighet. Fans köper digitala bingobrickor under matchen, vilket skapar en ny intäktsström som kräver noll extra omkostnader.</p>
+                            <ul class="feature-list">
+                                <li>Följ försäljning i realtid</li>
+                                <li>Automatisk prisutdelning</li>
+                                <li>Ingen lagerhållning eller fysiska brickor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎮</div>
+                            <h3>Engagera publiken</h3>
+                            <p>Förvandla åskådare till aktiva deltagare. Fans spelar tillsammans, skapar spänning och bygger gemenskap..</p>
+                            <ul class="feature-list">
+                                <li>Interaktivt spel under pauserna</li>
+                                <li>Social upplevelse för alla - över 18 år.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row feature-row">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">🚫💵</div>
+                            <h3>100% Kontantfritt</h3>
+                            <p>Ingen kontanthantering betyder inga säkerhetsrisker, ingen räkning och inget krångel. Allt är digitalt och automatiserat genom säkra betalningsleverantörer.</p>
+                            <ul class="feature-list">
+                                <li>Swish integration</li>
+                                <li>Omedelbar betalningsbekräftelse</li>
+                                <li>Automatisk avstämning</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Enkel Installation</h3>
+                            <p>Kom igång på minuter, inte veckor. Vår intuitiva adminpanel gör det enkelt att skapa spel, hantera priser och följa prestanda.</p>
+                            <ul class="feature-list">
+                                <li>Snabb introduktionsprocess</li>
+                                <li>Intuitiv adminpanel</li>
+                                <li>Realtidskontroll av spel</li>
+                                <li>Omfattande rapportering</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works-section">
+            <div class="container">
+                <h2 class="section-title">Så Här Fungerar Det</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h4>Skapa Spel</h4>
+                            <p>Skapa ett bingospel för er match med anpassade inställningar och priser</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h4>Fans Köper</h4>
+                            <p>Fans köper digitala bingobrickor på sina telefoner med Swish eller Vipps</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h4>Spela Tillsammans</h4>
+                            <p>Nummer ropas under periodpauserna, fansen markerar sina brickor i realtid</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h4>Vinnare!</h4>
+                            <p>Automatisk vinnardetektering och prisutdelning - helt problemfritt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2 class="section-title">Varför Klubbar Väljer HockeyBox</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <h4>📊 Intäktsinsikter</h4>
+                            <p>Följ intäkter, deltagandegrader och optimera er prisstrategi med detaljerad analys</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <h4>🎯 Fanlojalitet</h4>
+                            <p>Skapa unika upplevelser som får fansen att komma tillbaka match efter match</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <h4>🔒 Säkert & Pålitligt</h4>
+                            <p>Säkerhet i företagsklass med pålitliga betalningsleverantörer och dataskydd</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <h4>📱 Mobilanpassat</h4>
+                            <p>Optimerat för smartphones - fans spelar direkt från sina egna enheter</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <h4>⏱️ Tidsbesparande</h4>
+                            <p>Automatiserad spelhantering innebär att er personal kan fokusera på det som verkligen betyder något</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <h4>🌍 Skalbart</h4>
+                            <p>Fungerar för små klubbar och stora arenor - växer med era behov</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container text-center">
+                <h2>Redo Att Förvandla Er Matchupplevelse?</h2>
+                <p class="lead">Gå med i de klubbar som redan engagerar fans och ökar intäkterna med HockeyBox Bingo</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary btn-lg">Kom Igång Idag</a>
+                    <a href="mailto:info@hockeybox.com" class="btn btn-outline-primary btn-lg">Kontakta Oss</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
