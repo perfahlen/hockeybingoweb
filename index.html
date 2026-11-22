@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,9 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:
+                linear-gradient(rgba(26, 32, 44, 0.55), rgba(26, 32, 44, 0.55)),
+                url('hero.png') center / cover no-repeat;
             color: white;
             padding: 100px 20px;
             text-align: center;
@@ -26,22 +29,57 @@
             overflow: hidden;
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
-            background-size: 50px 50px;
-        }
-
         .hero-content {
             max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+        }
+
+        .hero-bingo-card {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            width: 260px;
+            transform: translateY(-50%) rotate(-8deg);
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            padding: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 12px 30px rgba(26, 32, 44, 0.12);
+            opacity: 0.50;
+            pointer-events: none;
+        }
+
+        .hero-bingo-card span {
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 4px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .hero-bingo-card span.is-flashing {
+            animation: bingo-flash 700ms ease-out;
+        }
+
+        @keyframes bingo-flash {
+            50% {
+                background-color: rgba(255, 255, 255, 0.4);
+                border-color: rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-bingo-card span.is-flashing {
+                animation: none;
+            }
         }
 
         .hero-title {
@@ -87,7 +125,11 @@
         /* Problem Section */
         .problem-section {
             padding: 80px 20px;
-            background: #f8f9fa;
+            background-color: #f8f9fa;
+            background-image:
+                linear-gradient(rgba(102, 126, 234, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 126, 234, 0.055) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         .section-title {
@@ -141,7 +183,11 @@
         /* Solution Section */
         .solution-section {
             padding: 80px 20px;
-            background: white;
+            background-color: white;
+            background-image:
+                linear-gradient(rgba(102, 126, 234, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 126, 234, 0.045) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         .feature-row {
@@ -199,7 +245,11 @@
         /* How It Works Section */
         .how-it-works-section {
             padding: 80px 20px;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
+            background:
+                linear-gradient(rgba(102, 126, 234, 0.16) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 126, 234, 0.16) 1px, transparent 1px),
+                linear-gradient(to bottom, #667eea, #764ba2);
+            background-size: 40px 40px, 40px 40px, 100% 100%;
             color: white;
         }
 
@@ -241,7 +291,11 @@
         /* Benefits Section */
         .benefits-section {
             padding: 80px 20px;
-            background: white;
+            background-color: white;
+            background-image:
+                linear-gradient(rgba(102, 126, 234, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 126, 234, 0.045) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         .benefit-card {
@@ -266,7 +320,11 @@
         /* CTA Section */
         .cta-section {
             padding: 100px 20px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background-size: 40px 40px, 40px 40px, 100% 100%;
             color: white;
         }
 
@@ -293,6 +351,69 @@
             color: #f5576c;
         }
 
+        /* Footer */
+        .footer-section {
+            background: #1a202c;
+            background-image:
+                linear-gradient(rgba(203, 213, 224, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(203, 213, 224, 0.035) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #e2e8f0;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-column {
+            margin-bottom: 2rem;
+        }
+
+        .footer-title {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column p,
+        .footer-column li {
+            color: #cbd5e0;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.65rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2d3748;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            color: #a0aec0;
+            text-align: center;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-title {
@@ -315,6 +436,10 @@
                 width: 100%;
             }
 
+            .hero-bingo-card {
+                display: none;
+            }
+
             .problem-card,
             .feature-card,
             .step-card,
@@ -324,43 +449,57 @@
         }
     </style>
 </head>
+
 <body>
     <div class="marketing-page">
         <!-- Hero Section -->
         <section class="hero-section">
+            <div class="hero-bingo-card" aria-hidden="true">
+                <span>2</span><span>18</span><span>34</span><span>47</span><span>61</span>
+                <span>7</span><span>21</span><span>36</span><span>53</span><span>68</span>
+                <span>11</span><span>24</span><span>★</span><span>49</span><span>72</span>
+                <span>12</span><span>28</span><span>39</span><span>55</span><span>75</span>
+                <span>5</span><span>23</span><span>42</span><span>58</span><span>64</span>
+            </div>
             <div class="hero-content">
-                <h1 class="hero-title">Förvandla Periodpauser Till Intäkter</h1>
-                <p class="hero-subtitle">Engagera dina fans med interaktiva bingospel och generera extra intäkter under varje match</p>
-                
+                <h1 class="hero-title">Första periodpaus - korv och kaffe</h1>
+                <p class="hero-subtitle">
+                    Andra periodpaus - gör något tillsammans på mediakuben, på displayen eller i fiket. Spela ArenaBingo
+                    tillsammans</p>
+
             </div>
         </section>
 
         <!-- Problem Statement -->
         <section class="problem-section">
             <div class="container">
-                <h2 class="section-title">Utmaningen Alla Klubbar Möter</h2>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="problem-card">
                             <div class="problem-icon">📱</div>
-                            <h3>Fans</h3>
+                            <h3>Besökare</h3>
                             <p>
-                                Under periodpauserna finns en fantastisk möjlighet att hålla fansen engagerade i arenaupplevelsen. Genom kreativa aktiviteter, interaktioner eller underhållning kan vi tillsammans göra pauserna underhållande!
+                                Under periodpauserna finns en möjlighet att hålla besökare engagerade i
+                                arenaupplevelsen.
+                                Genom kreativa aktiviteter, interaktioner eller underhållning kan vi tillsammans göra
+                                pauserna underhållande.
                             </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="problem-card">
-                            <div class="problem-icon">💰</div>
-                            <h3>Utöka intäkter</h3>
-                            <p>Utöka möjlighet till intäkter som inte finns idag på för besökarna underhållande sätt.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="problem-card">
                             <div class="problem-icon">🎪</div>
                             <h3>Pauser</h3>
-                            <p>Första perioden: kaffe och korv. Andra perioden: istället för att titta på telefonen och ismaskinen. Spela tillsammans med övriga besökare istället.</p>
+                            <p>Första perioden: kaffe och korv. Andra perioden: istället för att titta på telefonen och
+                                ismaskinen. Spela tillsammans med övriga besökare.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="problem-card">
+                            <div class="problem-icon">💰</div>
+                            <h3>Intäkter</h3>
+                            <p>Utöka klubbens möjlighet till intäkter som inte finns idag på för besökarna underhållande sätt.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -370,30 +509,34 @@
         <!-- Solution Section -->
         <section class="solution-section" id="features">
             <div class="container">
-                <h2 class="section-title">Här kommer HockeyBingo</h2>
+                <h2 class="section-title">ArenaBingo</h2>
                 <!--<p class="section-subtitle">Den kompletta lösningen för att engagera fans och generera intäkter</p>-->
-                
+
                 <div class="row feature-row">
                     <div class="col-md-6">
                         <div class="feature-card">
-                            <div class="feature-icon">💸</div>
-                            <h3>Öka Intäkterna</h3>
-                            <p>Gör varje match till en intäktsmöjlighet. Fans köper digitala bingobrickor under matchen, vilket skapar en ny intäktsström som kräver noll extra omkostnader.</p>
+                            <div class="feature-icon">🎮</div>
+                            <h3>Arenupplevelse</h3>
+                            <p>Förvandla surfare till aktiva deltagare. Fans spelar tillsammans, skapar spänning och
+                                bygger gemenskap..</p>
                             <ul class="feature-list">
-                                <li>Följ försäljning i realtid</li>
-                                <li>Automatisk prisutdelning</li>
-                                <li>Ingen lagerhållning eller fysiska brickor</li>
+                                <li>Interaktivt spel under pauserna</li>
+                                <li>Social upplevelse för alla - över 18 år.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="feature-card">
-                            <div class="feature-icon">🎮</div>
-                            <h3>Engagera publiken</h3>
-                            <p>Förvandla åskådare till aktiva deltagare. Fans spelar tillsammans, skapar spänning och bygger gemenskap..</p>
+                            <div class="feature-icon">⚡</div>
+                            <h3>Installation</h3>
+                            <p>Ingen installation, inga nedladdningar. Kom igång på minuter. Vår intuitiva adminpanel
+                                gör det enkelt att skapa
+                                spel.</p>
                             <ul class="feature-list">
-                                <li>Interaktivt spel under pauserna</li>
-                                <li>Social upplevelse för alla - över 18 år.</li>
+                                <li>Snabb introduktionsprocess</li>
+                                <li>Överblick i vår dashboard</li>
+                                <li>Adminpanel</li>
+                                <li>Realtidskontroll av spel</li>
                             </ul>
                         </div>
                     </div>
@@ -404,7 +547,8 @@
                         <div class="feature-card">
                             <div class="feature-icon">🚫💵</div>
                             <h3>100% Kontantfritt</h3>
-                            <p>Ingen kontanthantering betyder inga säkerhetsrisker, ingen räkning och inget krångel. Allt är digitalt och automatiserat genom säkra betalningsleverantörer.</p>
+                            <p>Ingen kontanthantering, ingen räkning och inget krångel.
+                                Allt är digitalt och automatiserat genom säkra betalningsleverantörer.</p>
                             <ul class="feature-list">
                                 <li>Swish integration</li>
                                 <li>Omedelbar betalningsbekräftelse</li>
@@ -414,17 +558,21 @@
                     </div>
                     <div class="col-md-6">
                         <div class="feature-card">
-                            <div class="feature-icon">⚡</div>
-                            <h3>Enkel Installation</h3>
-                            <p>Kom igång på minuter, inte veckor. Vår intuitiva adminpanel gör det enkelt att skapa spel, hantera priser och följa prestanda.</p>
+                            <div class="feature-icon">💵</div>
+                            <h3>Intäkter</h3>
+                            <p>Fans köper bingobrickor (lotter) under matchen, vilket skapar en ny intäktsström som
+                                inte kräver någon kostnad.</p>
                             <ul class="feature-list">
-                                <li>Snabb introduktionsprocess</li>
-                                <li>Intuitiv adminpanel</li>
-                                <li>Realtidskontroll av spel</li>
-                                <li>Omfattande rapportering</li>
+                                <li>Följ försäljning i realtid</li>
+                                <li>Betala ut vinster i form av pengar eller varuvinster</li>
+                                <li>Bestäm hur många lotter som ska vinna vid varuvinster eller hur många % vid
+                                    pengavinster</li>
+                                <li>Automatisk utbetalning vid pengavinster</li>
+                                <li>Ingen lagerhållning eller fysiska brickor</li>
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -432,34 +580,35 @@
         <!-- How It Works -->
         <section class="how-it-works-section">
             <div class="container">
-                <h2 class="section-title">Så Här Fungerar Det</h2>
+                <h2 class="section-title">Så fungerar det</h2>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="step-card">
                             <div class="step-number">1</div>
-                            <h4>Skapa Spel</h4>
-                            <p>Skapa ett bingospel för er match med anpassade inställningar och priser</p>
+                            <h4>Skapa spel</h4>
+                            <p>Skapa ett spel för er match med anpassade inställningar och priser</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="step-card">
                             <div class="step-number">2</div>
-                            <h4>Fans Köper</h4>
-                            <p>Fans köper digitala bingobrickor på sina telefoner med Swish eller Vipps</p>
+                            <h4>Fans köper</h4>
+                            <p>Fans köper digitala bingobrickor (lotter) på sina telefoner med Swish</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="step-card">
                             <div class="step-number">3</div>
-                            <h4>Spela Tillsammans</h4>
-                            <p>Nummer ropas under periodpauserna, fansen markerar sina brickor i realtid</p>
+                            <h4>Tillsammans</h4>
+                            <p>När spelet är igång och dragningen pågår ropas numren ut. Spelarna markerar dragna nummer
+                                på sina brickor - eller använder autodutt.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="step-card">
                             <div class="step-number">4</div>
-                            <h4>Vinnare!</h4>
-                            <p>Automatisk vinnardetektering och prisutdelning - helt problemfritt</p>
+                            <h4>Vinnare</h4>
+                            <p>Konfetti visas på mediakuben när spelet (lotteriet) är avslutat.</p>
                         </div>
                     </div>
                 </div>
@@ -469,44 +618,26 @@
         <!-- Benefits Section -->
         <section class="benefits-section">
             <div class="container">
-                <h2 class="section-title">Varför Klubbar Väljer HockeyBox</h2>
+                <h2 class="section-title">Varför andra väljer</h2>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="benefit-card">
-                            <h4>📊 Intäktsinsikter</h4>
-                            <p>Följ intäkter, deltagandegrader och optimera er prisstrategi med detaljerad analys</p>
+                            <h4>🎯 Arenaupplevelse</h4>
+                            <p>Hockey är underhållning, underhåll besökare i arenan</p>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="benefit-card">
-                            <h4>🎯 Fanlojalitet</h4>
-                            <p>Skapa unika upplevelser som får fansen att komma tillbaka match efter match</p>
+                            <h4>🔒 Säkerhet</h4>
+                            <p>Betalningsmed pålitliga leverantörer i världsklass.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="benefit-card">
-                            <h4>🔒 Säkert & Pålitligt</h4>
-                            <p>Säkerhet i företagsklass med pålitliga betalningsleverantörer och dataskydd</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="benefit-card">
-                            <h4>📱 Mobilanpassat</h4>
-                            <p>Optimerat för smartphones - fans spelar direkt från sina egna enheter</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="benefit-card">
-                            <h4>⏱️ Tidsbesparande</h4>
-                            <p>Automatiserad spelhantering innebär att er personal kan fokusera på det som verkligen betyder något</p>
-                        </div>
-                    </div>
+
                     <div class="col-md-4">
                         <div class="benefit-card">
                             <h4>🌍 Skalbart</h4>
-                            <p>Fungerar för små klubbar och stora arenor - växer med era behov</p>
+                            <p>Fungerar för små klubbar och stora arenor - väx med era behov</p>
                         </div>
                     </div>
                 </div>
@@ -516,14 +647,82 @@
         <!-- Call to Action -->
         <section class="cta-section">
             <div class="container text-center">
-                <h2>Redo Att Förvandla Er Matchupplevelse?</h2>
-                <p class="lead">Gå med i de klubbar som redan engagerar fans och ökar intäkterna med HockeyBox Bingo</p>
+                <h2>Nyfiken?</h2>
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary btn-lg">Kom Igång Idag</a>
-                    <a href="mailto:info@hockeybox.com" class="btn btn-outline-primary btn-lg">Kontakta Oss</a>
+                    <a href="mailto:per@hockeybingo.se" class="btn btn-primary btn-lg">Kontakta Oss</a>
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 footer-column">
+                        <div class="footer-brand">ArenaBingo</div>
+                        <p>En digital bingolösning som engagerar besökare och skapar nya möjligheter för arenan.</p>
+                    </div>
+                    <div class="col-md-3 footer-column">
+                        <h3 class="footer-title">Lösningen</h3>
+                        <ul class="footer-links">
+                            <li><a href="#features">Arenaupplevelse</a></li>
+                            <li><a href="#features">Adminpanel</a></li>
+                            <li><a href="#features">Säker betalning</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-column">
+                        <h3 class="footer-title">Kontakta oss</h3>
+                        <ul class="footer-links">
+                            <li><a href="mailto:per@hockeybingo.se">E-post</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-column">
+                        <h3 class="footer-title">Perfa Solution AB</h3>
+                        <ul class="footer-links">
+                            <li>Fröstvägen 16d</li>
+                            <li>SE-865 92 Alnö</li>
+                            <li>Org.nr: 559424-8568</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 ArenaBingo. Alla rättigheter förbehållna.</p>
+                </div>
+            </div>
+        </footer>
     </div>
+    <script>
+        const hero = document.querySelector('.hero-section');
+        const bingoCard = hero.querySelector('.hero-bingo-card');
+        const bingoNumbers = Array.from(bingoCard.querySelectorAll('span'))
+            .filter(cell => /^\d+$/.test(cell.textContent.trim()));
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const smallScreen = window.matchMedia('(max-width: 768px)');
+        let lastFlashTime = -Infinity;
+        let lastFlashedCell = null;
+
+        hero.addEventListener('pointermove', event => {
+            if (event.pointerType !== 'mouse' || reducedMotion.matches || smallScreen.matches ||
+                event.timeStamp - lastFlashTime < 850) {
+                return;
+            }
+
+            const candidates = bingoNumbers.filter(cell => cell !== lastFlashedCell);
+            const cell = candidates[Math.floor(Math.random() * candidates.length)];
+            if (lastFlashedCell) {
+                lastFlashedCell.classList.remove('is-flashing');
+            }
+            cell.classList.add('is-flashing');
+            lastFlashedCell = cell;
+            lastFlashTime = event.timeStamp;
+        });
+
+        bingoCard.addEventListener('animationend', event => {
+            if (event.animationName === 'bingo-flash') {
+                event.target.classList.remove('is-flashing');
+            }
+        });
+    </script>
 </body>
+
 </html>
